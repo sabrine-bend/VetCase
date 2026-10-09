@@ -4,10 +4,14 @@ import json
 
 import streamlit as st
 from dotenv import load_dotenv
-
-import vetcase_agent_old as backend
+import os
 
 load_dotenv()
+
+if "GROQ_API_KEY" in st.secrets:
+    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+
+import vetcase_agent_old as backend
 
 st.set_page_config(
     page_title="VetCase",
